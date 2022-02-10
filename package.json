@@ -1,0 +1,52 @@
+{
+  "name": "clerk-redirect-issue",
+  "license": "UNLICENSED",
+  "main": "n/a",
+  "scripts": {
+    "dev": "next dev",
+    "dev:debug": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "lint": "next lint --dir ./src/ --ignore-path ./.gitignore --fix",
+    "format": "prettier . --ignore-path ./.gitignore --write",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@clerk/nextjs": "^2.4.4",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "@tailwindcss/forms": "^0.4.0",
+    "next": "12.0.10",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@clerk/types": "^1.19.2",
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/node": "^14.17",
+    "@types/react": "17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.11.0",
+    "autoprefixer": "^10.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "8.5.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-next": "^12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.5",
+    "prettier": "2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.4",
+    "tailwindcss": "^3.0.7",
+    "typescript": "4.5.4"
+  },
+  "engines": {
+    "node": "^14.17",
+    "yarn": "^1.22.17"
+  },
+  "private": true
+}
