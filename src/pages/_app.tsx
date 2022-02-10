@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { AppPropsWithLayout } from 'next';
-import { useRouter } from 'next/router';
-import { ClerkProvider, SignedIn, SignedOut } from '@clerk/nextjs';
-import '@/styles/globals.css';
+import { useEffect } from "react";
+import { AppPropsWithLayout } from "next";
+import { useRouter } from "next/router";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/nextjs";
+import "@/styles/globals.css";
 
 /**
  * List pages you want to be publicly accessible, or leave empty if every page
@@ -13,10 +13,11 @@ import '@/styles/globals.css';
  *  "/foo/[...bar]"  for pages/foo/[...bar].js
  */
 const publicPages = [
-  '/sign-in/[[...index]]',
-  '/sign-up/[[...index]]',
-  '/verify-magic-link',
-  '/privacy-policy',
+  "/sign-in/[[...index]]",
+  "/sign-up/[[...index]]",
+  "/verify-magic-link",
+  "/privacy-policy",
+  "/social-login-callback",
 ];
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
@@ -27,16 +28,20 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   const page = getLayout(<Component {...pageProps} />);
 
-  useEffect(() => {
-    if (!isPublicPage) router.push(`/sign-in?redirect_url=${router.asPath}`);
-  }, [isPublicPage, router, router.asPath]);
-
   return (
     <ClerkProvider>
-        <SignedIn>{page}</SignedIn>
-        <SignedOut>{isPublicPage && page}</SignedOut>
+      <SignedIn>{page}</SignedIn>
+      <SignedOut>{isPublicPage ? page : <SignInRedirect />}</SignedOut>
     </ClerkProvider>
   );
+};
+
+const SignInRedirect = () => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push(`/sign-in?redirect_url=${router.asPath}`);
+  }, [router, router.asPath]);
+  return null;
 };
 
 export default MyApp;

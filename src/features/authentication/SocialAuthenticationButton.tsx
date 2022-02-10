@@ -43,7 +43,7 @@ const SocialAuthenticationButton: React.VFC<SocialLoginButtonProps> = ({ provide
     return authenticateWithRedirect({
       strategy,
       redirectUrl: '/social-login-callback',
-      redirectUrlComplete: requestedUrl ?? '/',
+      redirectUrlComplete: requestedUrl || '/',
     });
   };
 
